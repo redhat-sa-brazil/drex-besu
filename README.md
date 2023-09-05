@@ -11,8 +11,19 @@ O howto mostra o deploy do besu observando a documentação que estão nos links
 
 Ambientes que estão sendo utilizado no openshift para este deploy.
 - ARO
+	- 4.12
 
 *outros ambientes serão disponibilizados em breve*
 
 ###### ### Arquitetura do ARO
 [![Arquitetura do ARO](https://github.com/redhat-sa-brazil/drex-besu/blob/main/docs/aro_architecture.png "Arquitetura do ARO")](https://github.com/redhat-sa-brazil/drex-besu/blob/main/docs/aro_architecture.png "Arquitetura do ARO")
+
+###### ### Ambiente
+
+ARO 4.12.x
+
+###### ### Construção do container
+
+- hyperledger-besu [23.4.1](https://github.com/hyperledger/besu/releases/tag/23.4.1 "23.4.1")(conforme especificado na arquitetura do bacen)
+- [ubi9/openjdk17](registry.access.redhat.com/ubi9/openjdk-17:latest "ubi9/openjdk17")
+
