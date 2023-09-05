@@ -6,7 +6,7 @@ Aqui estão algumas características e aspectos notáveis do Hyperledger Besu:
 
 1. **Compatibilidade com Ethereum:** O Besu implementa o protocolo Ethereum, o que o torna compatível com todas as ferramentas padrão da Ethereum, como MetaMask, Remix e Truffle. Ele pode executar contratos inteligentes escritos em Solidity, e também é compatível com as APIs Ethereum JSON-RPC.
 
-3. **Privacidade avançada: **Uma das características mais distintas do Hyperledger Besu é a sua capacidade de suportar transações privadas. Empresas e organizações que necessitam de confidencialidade em suas operações podem usar o Besu para criar redes privadas onde as transações são visíveis apenas para as partes envolvidas.
+3. **Privacidade avançada:** Uma das características mais distintas do Hyperledger Besu é a sua capacidade de suportar transações privadas. Empresas e organizações que necessitam de confidencialidade em suas operações podem usar o Besu para criar redes privadas onde as transações são visíveis apenas para as partes envolvidas.
 
 5. **Flexibilidade de consenso:** O Besu suporta vários algoritmos de consenso, incluindo Proof-of-Work (PoW) e Proof-of-Authority (PoA). Estes algoritmos permitem que a plataforma seja utilizada tanto em redes públicas quanto privadas, tornando-a versátil para uma variedade de aplicações.
 
