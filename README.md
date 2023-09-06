@@ -40,11 +40,13 @@ Os modelos integrados de implementação do Openshift nas clouds permite ser uti
 > No repositório temos o Dockerfile que já está preparado para ultima versão da UBI9 com o openjdk.
 
 **Build com docker**
+
 ``
  docker build -t besu-ubi-23.4.1:latest -f Dockerfile .
 ``
 
 **Build com podman**
+
 ``
  podman build -t besu-ubi-23.4.1:latest -f Dockerfile .
 ``
