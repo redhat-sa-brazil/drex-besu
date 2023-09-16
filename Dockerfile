@@ -2,7 +2,7 @@ FROM registry.access.redhat.com/ubi9/openjdk-17:latest
 ARG VERSION="dev"
 
 USER 0
-COPY . /opt/besu/
+COPY besu/. /opt/besu/
 
 RUN groupadd besu && useradd -g besu -m -b /opt/besu besu && \
     chown besu:besu /opt/besu -R && \
