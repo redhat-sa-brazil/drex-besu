@@ -21,7 +21,7 @@ spec:
         app: besu
     spec:
       containers:
-      - image: ghcr.io/redhat-sa-brazil/drex-besu:sha256-169ed9d5754919fc158078262bf376b6c1a969ba975a1d4ced198d8bf7199c42
+      - image: ghcr.io/redhat-sa-brazil/drex-besu:sha256-5eaa165693a0e4aaa1a4834f3681b353395a4d2d5ec961cb8dd802a280e09799.sig
         imagePullPolicy: IfNotPresent
         name: container
         ports:
