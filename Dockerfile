@@ -14,7 +14,6 @@ ENV BESU_RPC_HTTP_HOST 0.0.0.0
 ENV BESU_RPC_WS_HOST 0.0.0.0
 ENV BESU_GRAPHQL_HTTP_HOST 0.0.0.0
 ENV BESU_PID_PATH "/tmp/pid"
-ENV BESU_DATA=/opt/data
 ENV OTEL_RESOURCE_ATTRIBUTES="service.name=besu,service.version=$VERSION"
 
 ENV PATH="/opt/besu/bin:${PATH}"
@@ -22,7 +21,7 @@ ENV PATH="/opt/besu/bin:${PATH}"
 USER besu
 WORKDIR /opt/besu
 
-ENTRYPOINT ["besu --data-path=$BESU_DATA"]
+CMD ["besu", "--data-path=/opt/data"]
 HEALTHCHECK --start-period=5s --interval=5s --timeout=1s --retries=10 CMD bash -c "[ -f /tmp/pid ]"
 
 # Build-time metadata as defined at http://label-schema.org

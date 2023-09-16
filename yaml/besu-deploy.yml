@@ -25,7 +25,7 @@ spec:
           persistentVolumeClaim:
             claimName: besu-data
       containers:
-      - image: quay.io/redhatbrsa/hyperledger-besu:latest
+      - image: quay.io/redhatbrsa/hyperledger-besu:devel
         imagePullPolicy: Always
         name: container
         ports:
