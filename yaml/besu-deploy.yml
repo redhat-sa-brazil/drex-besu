@@ -20,9 +20,13 @@ spec:
       labels:
         app: besu
     spec:
+      volumes:
+        - name: besu-data
+          persistentVolumeClaim:
+            claimName: besu-data
       containers:
       - image: quay.io/redhatbrsa/hyperledger-besu:latest
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         name: container
         ports:
         - containerPort: 8545
@@ -40,6 +44,9 @@ spec:
         - containerPort: 30303
           protocol: UDP
         resources: {}
+        volumeMounts:
+          - name: besu-data
+            mountPath: /opt/data
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
       dnsPolicy: ClusterFirst
