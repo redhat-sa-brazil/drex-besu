@@ -17,7 +17,7 @@ ENV BESU_PID_PATH "/tmp/pid"
 
 ENV OTEL_RESOURCE_ATTRIBUTES="service.name=besu,service.version=$VERSION"
 
-ENV PATH="/opt/besu/besu/bin:${PATH}"
+ENV PATH="/opt/besu/bin:${PATH}"
 
 USER besu
 WORKDIR /opt/besu
