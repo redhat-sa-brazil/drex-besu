@@ -4,7 +4,7 @@ metadata:
   name: besu
 spec:
   progressDeadlineSeconds: 600
-  replicas: 0
+  replicas: 1
   revisionHistoryLimit: 10
   selector:
     matchLabels:
@@ -21,7 +21,7 @@ spec:
         app: besu
     spec:
       containers:
-      - image: ghcr.io/redhat-sa-brazil/drex-besu:sha256-b22c3dcf1749a9711feaee6a754246b959e091d92912550d43dbac7e82f70513
+      - image: ghcr.io/redhat-sa-brazil/drex-besu:sha256-169ed9d5754919fc158078262bf376b6c1a969ba975a1d4ced198d8bf7199c42
         imagePullPolicy: IfNotPresent
         name: container
         ports:
