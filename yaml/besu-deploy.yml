@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: besu
-  namespace: besu
 spec:
   progressDeadlineSeconds: 600
   replicas: 0
@@ -22,7 +21,7 @@ spec:
         app: besu
     spec:
       containers:
-      - image: quay.io/fcalomen/besu:23.7.1-7
+      - image: image-registry.openshift-image-registry.svc:5000/digitalmoney/besu:latest
         imagePullPolicy: IfNotPresent
         name: container
         ports:

@@ -1,12 +1,9 @@
 apiVersion: tekton.dev/v1
 kind: Pipeline
 metadata:
-  creationTimestamp: "2023-09-08T20:00:47Z"
   generation: 3
   name: besu-pipeline
-  namespace: pipeline
-  resourceVersion: "159156"
-  uid: 38306796-0e52-4ec6-88b9-494f0055d6c5
+  namespace: digitalmoney
 spec:
   tasks:
   - name: git-clone
@@ -48,11 +45,11 @@ spec:
       name: git-clone
     workspaces:
     - name: output
-      workspace: pipeline-workspace
+      workspace: digitalmoney-workspace
   - name: buildah
     params:
     - name: IMAGE
-      value: image-registry.openshift-image-registry.svc:5000/pipeline/besu
+      value: image-registry.openshift-image-registry.svc:5000/digitalmoney/besu
     - name: BUILDER_IMAGE
       value: registry.redhat.io/rhel8/buildah@sha256:00795fafdab9bbaa22cd29d1faa1a01e604e4884a2c935c1bf8e3d1f0ad1c084
     - name: STORAGE_DRIVER
@@ -78,6 +75,6 @@ spec:
       name: buildah
     workspaces:
     - name: source
-      workspace: pipeline-workspace
+      workspace: digitalmoney-workspace
   workspaces:
-  - name: pipeline-workspace
+  - name: digitalmoney-workspace

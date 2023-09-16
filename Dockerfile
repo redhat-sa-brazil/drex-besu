@@ -1,5 +1,5 @@
 FROM registry.access.redhat.com/ubi9/openjdk-17:latest
-
+ARG VERSION="dev"
 
 USER 0
 COPY . /opt/besu/
@@ -13,7 +13,7 @@ RUN groupadd besu && useradd -g besu -m -b /opt/besu besu && \
 WORKDIR /opt/besu
 
 USER besu
-# Expose services ports
+# Expose services ports˜
 # 8545 HTTP JSON-RPC
 # 8546 WS JSON-RPC
 # 8547 HTTP GraphQL
@@ -32,7 +32,7 @@ ENV OTEL_RESOURCE_ATTRIBUTES="service.name=besu,service.version=$VERSION"
 
 ENV PATH="/opt/besu/bin:${PATH}"
 
-ENTRYPOINT ["besu"]
+ENTRYPOINT ["sh -c /opt/besu/bin/besu"]
 HEALTHCHECK --start-period=5s --interval=5s --timeout=1s --retries=10 CMD bash -c "[ -f /tmp/pid ]"
 
 # Build-time metadata as defined at http://label-schema.org
