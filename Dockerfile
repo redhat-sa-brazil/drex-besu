@@ -32,7 +32,7 @@ ENV OTEL_RESOURCE_ATTRIBUTES="service.name=besu,service.version=$VERSION"
 
 ENV PATH="/opt/besu/bin:${PATH}"
 
-ENTRYPOINT ["sh -c /opt/besu/bin/besu"]
+ENTRYPOINT ["/opt/besu/bin/besu"]
 HEALTHCHECK --start-period=5s --interval=5s --timeout=1s --retries=10 CMD bash -c "[ -f /tmp/pid ]"
 
 # Build-time metadata as defined at http://label-schema.org
