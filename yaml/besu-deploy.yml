@@ -21,7 +21,7 @@ spec:
         app: besu
     spec:
       containers:
-      - image: image-registry.openshift-image-registry.svc:5000/digitalmoney/besu:latest
+      - image: ghcr.io/redhat-sa-brazil/drex-besu:sha256-b22c3dcf1749a9711feaee6a754246b959e091d92912550d43dbac7e82f70513
         imagePullPolicy: IfNotPresent
         name: container
         ports:
