@@ -17,13 +17,14 @@ ENV BESU_PID_PATH "/tmp/pid"
 ENV OTEL_RESOURCE_ATTRIBUTES="service.name=besu,service.version=$VERSION"
 ENV METRICS_HOST 127.0.0.1
 ENV METRICS_PORT 9090
+ENV DATA_PATH=/opt/data
 
 ENV PATH="/opt/besu/bin:${PATH}"
 
 USER besu
 WORKDIR /opt/besu
 
-CMD ["sh", "-c", "besu --data-path=/opt/data --metrics-enabled --metrics-host ${METRICS_HOST}"]
+CMD ["sh", "-c", "besu --data-path=${DATA_PATH} --metrics-enabled --metrics-host ${METRICS_HOST} --metrics-port ${METRICS_PORT}"]
 HEALTHCHECK --start-period=5s --interval=5s --timeout=1s --retries=10 CMD bash -c "[ -f /tmp/pid ]"
 
 # Build-time metadata as defined at http://label-schema.org
