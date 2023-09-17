@@ -27,7 +27,12 @@ spec:
       containers:
       - image: quay.io/redhatbrsa/hyperledger-besu:devel
         imagePullPolicy: Always
-        name: container
+        name: besu
+        env:
+          - name: METRICS_HOST
+            value: prometheus-operated
+          - name: METRICS_PORT
+            value: '9090'
         ports:
         - containerPort: 8545
           protocol: TCP

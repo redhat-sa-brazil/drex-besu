@@ -1,0 +1,26 @@
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDatasource
+metadata:
+  name: grafana-datasource
+  namespace: digitalmoney
+  labels:
+    name: grafana-datasource
+    app: grafana-instance
+    project: digitalmoney
+spec:
+  datasource:
+      access: proxy
+      editable: true
+      isDefault: true
+      jsonData:
+        timeInterval: 5s
+        tlsSkipVerify: true
+      name: Prometheus
+      type: prometheus
+      url: 'http://prometheus-operated:9090'
+  plugins:
+    - name: grafana-clock-panel
+      version: 1.3.0
+  instanceSelector:
+    matchLabels:
+      dashboards:  grafana-instance
