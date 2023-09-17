@@ -23,7 +23,7 @@ ENV PATH="/opt/besu/bin:${PATH}"
 USER besu
 WORKDIR /opt/besu
 
-CMD ["besu", "--data-path=/opt/data", "--metrics-enabled", "--metrics-host $METRICS_HOST"]
+CMD ["besu --data-path=/opt/data --metrics-enabled --metrics-host ${METRICS_HOST}"]
 HEALTHCHECK --start-period=5s --interval=5s --timeout=1s --retries=10 CMD bash -c "[ -f /tmp/pid ]"
 
 # Build-time metadata as defined at http://label-schema.org
