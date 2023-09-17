@@ -4,7 +4,7 @@ metadata:
   name: besu-config-toml
 immutable: false
 data:
-  data: >-
+  config.toml: |-
     # Valid TOML config file
     data-path="/opt/data" # Path
     # # Network
