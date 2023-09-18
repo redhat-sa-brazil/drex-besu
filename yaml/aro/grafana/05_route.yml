@@ -2,11 +2,9 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: grafana-route
-  namespace: digitalmoney
   labels:
     name: grafana-route
     app: grafana-instance
-    project: digitalmoney
     operated-prometheus: "true"
 spec:
   path: /

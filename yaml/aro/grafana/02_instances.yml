@@ -2,11 +2,9 @@ apiVersion: grafana.integreatly.org/v1beta1
 kind: Grafana
 metadata:
   name: grafana-instance
-  namespace: digitalmoney
   labels:
     name: grafana-instance
     app: grafana-app
-    project: digitalmoney
 spec:
   ingress:
     enabled: 'true'
