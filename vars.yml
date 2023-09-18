@@ -1,7 +1,7 @@
 ---
-openshift_cluster: "https://api.y0tma5ts.eastus.aroapp.io:6443"
-openshift_username: "kubeadmin"
-openshift_password: "f6TI7-YLAIq-hn4Ze-IWLvp"
-project_name: besu-5
-project_display_name: "besu-5"
-project_description: "bla"
+openshift_cluster: "https://XXXXXX:6443"
+openshift_username: "XXXXX"
+openshift_password: "XXXXX"
+project_name: besu
+project_display_name: "besu"
+project_description: "Projeto Hyperledger Besu em openshift"
