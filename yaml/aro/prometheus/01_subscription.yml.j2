@@ -1,3 +1,12 @@
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+    name: {{ project_name }}-opg
+    namespace: {{ project_name }}
+spec:
+  targetNamespaces:
+    - {{ project_name }}
+  upgradeStrategy: Default
 ---
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
@@ -9,53 +18,8 @@ metadata:
   namespace: {{ project_name }}
 spec:
   channel: beta
-  installPlanApproval: Manual
+  installPlanApproval: Automatic
   name: rhods-prometheus-operator
   source: redhat-operators
   sourceNamespace: openshift-marketplace
   startingCSV: rhods-prometheus-operator.4.10.0
----
-apiVersion: operators.coreos.com/v1alpha1
-kind: InstallPlan
-metadata:
-  creationTimestamp: "2023-09-16T22:16:25Z"
-  generateName: install-
-  generation: 1
-  labels:
-    operators.coreos.com/rhods-prometheus-operator.{{ project_name }}: ""
-  namespace: {{ project_name }}
-  ownerReferences:
-  - apiVersion: operators.coreos.com/v1alpha1
-    blockOwnerDeletion: false
-    controller: false
-    kind: Subscription
-    name: rhods-prometheus-operator
-    uid: 3102419d-faf9-4d02-89e0-1ebac694e689
-spec:
-  approval: Automatic
-  approved: true
-  clusterServiceVersionNames:
-  - rhods-prometheus-operator.4.10.0
-  generation: 1
----
-apiVersion: operators.coreos.com/v2
-kind: OperatorCondition
-metadata:
-  generation: 1
-  labels:
-    operators.coreos.com/rhods-prometheus-operator.digitalmoney: ""
-  name: rhods-prometheus-operator.4.10.0
-  namespace: {{ project_name }}
-  ownerReferences:
-  - apiVersion: operators.coreos.com/v1alpha1
-    blockOwnerDeletion: false
-    controller: true
-    kind: ClusterServiceVersion
-    name: rhods-prometheus-operator.4.10.0
-    uid: 25393f0d-3943-4428-828d-92c3d228da8d
-spec:
-  deployments:
-  - prometheus-operator
-  serviceAccounts:
-  - prometheus-k8s
-  - prometheus-operator

@@ -28,7 +28,7 @@ spec:
           configMap:
             name: besu-config-toml
       containers:
-      - image: quay.io/redhatbrsa/hyperledger-besu:devel
+      - image: quay.io/redhatbrsa/hyperledger-besu:v0.1a
         imagePullPolicy: Always
         name: besu
         env:
