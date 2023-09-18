@@ -12,8 +12,44 @@ spec:
   instanceSelector:
     matchLabels:
       dashboards: grafana-instance
-  json: >
+  json: |
     {
+      "__inputs": [
+        {
+          "name": "Prometheus",
+          "label": "Prometheus",
+          "description": "",
+          "type": "datasource",
+          "pluginId": "prometheus",
+          "pluginName": "Prometheus"
+        }
+      ],
+      "__requires": [
+        {
+          "type": "grafana",
+          "id": "grafana",
+          "name": "Grafana",
+          "version": "6.2.2"
+        },
+        {
+          "type": "panel",
+          "id": "graph",
+          "name": "Graph",
+          "version": ""
+        },
+        {
+          "type": "datasource",
+          "id": "prometheus",
+          "name": "Prometheus",
+          "version": "1.0.0"
+        },
+        {
+          "type": "panel",
+          "id": "table",
+          "name": "Table",
+          "version": ""
+        }
+      ],
       "annotations": {
         "list": [
           {
@@ -27,115 +63,328 @@ spec:
           }
         ]
       },
+      "description": "Provides an overview of Besu nodes",
       "editable": true,
-      "gnetId": null,
+      "gnetId": 10273,
       "graphTooltip": 0,
-      "id": 1,
-      "iteration": 1586846207609,
+      "id": null,
+      "iteration": 1560146167177,
       "links": [],
       "panels": [
         {
-          "collapsed": false,
+          "columns": [],
+          "fontSize": "120%",
           "gridPos": {
-            "h": 1,
+            "h": 9,
             "w": 24,
             "x": 0,
             "y": 0
           },
-          "id": 8,
-          "panels": [],
-          "title": "CPU",
-          "type": "row"
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "fill": 1,
-          "gridPos": {
-            "h": 6,
-            "w": 12,
-            "x": 0,
-            "y": 1
-          },
           "id": 10,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
           "links": [],
-          "nullPointMode": "null",
           "options": {},
-          "percentage": false,
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
+          "pageSize": null,
+          "scroll": true,
+          "showHeader": true,
+          "sort": {
+            "col": 2,
+            "desc": true
+          },
+          "styles": [
+            {
+              "alias": "",
+              "colorMode": null,
+              "colors": [
+                "rgba(245, 54, 54, 0.9)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(50, 172, 45, 0.97)"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 2,
+              "mappingType": 1,
+              "pattern": "job",
+              "thresholds": [],
+              "type": "hidden",
+              "unit": "short"
+            },
+            {
+              "alias": "Chain Height",
+              "colorMode": null,
+              "colors": [
+                "rgba(245, 54, 54, 0.9)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(50, 172, 45, 0.97)"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 2,
+              "mappingType": 1,
+              "pattern": "Value #A",
+              "thresholds": [],
+              "type": "number",
+              "unit": "locale"
+            },
+            {
+              "alias": "Total Difficulty",
+              "colorMode": null,
+              "colors": [
+                "rgba(245, 54, 54, 0.9)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(50, 172, 45, 0.97)"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 2,
+              "mappingType": 1,
+              "pattern": "Value #B",
+              "thresholds": [],
+              "type": "number",
+              "unit": "sci"
+            },
+            {
+              "alias": "",
+              "colorMode": null,
+              "colors": [
+                "rgba(245, 54, 54, 0.9)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(50, 172, 45, 0.97)"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 2,
+              "mappingType": 1,
+              "pattern": "Time",
+              "thresholds": [],
+              "type": "hidden",
+              "unit": "short"
+            },
+            {
+              "alias": "",
+              "colorMode": null,
+              "colors": [
+                "rgba(245, 54, 54, 0.9)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(50, 172, 45, 0.97)"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 2,
+              "mappingType": 1,
+              "pattern": "__name__",
+              "thresholds": [],
+              "type": "hidden",
+              "unit": "short"
+            },
+            {
+              "alias": "Peer Count",
+              "colorMode": null,
+              "colors": [
+                "rgba(245, 54, 54, 0.9)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(50, 172, 45, 0.97)"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 2,
+              "mappingType": 1,
+              "pattern": "Value #C",
+              "thresholds": [
+                ""
+              ],
+              "type": "number",
+              "unit": "locale"
+            },
+            {
+              "alias": "Block Time (5m avg)",
+              "colorMode": null,
+              "colors": [
+                "rgba(245, 54, 54, 0.9)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(50, 172, 45, 0.97)"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 2,
+              "mappingType": 1,
+              "pattern": "Value #D",
+              "thresholds": [],
+              "type": "number",
+              "unit": "s"
+            },
+            {
+              "alias": "System",
+              "colorMode": null,
+              "colors": [
+                "rgba(245, 54, 54, 0.9)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(50, 172, 45, 0.97)"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 2,
+              "mappingType": 1,
+              "pattern": "instance",
+              "thresholds": [],
+              "type": "string",
+              "unit": "short",
+              "valueMaps": []
+            },
+            {
+              "alias": "Time Since Last Block",
+              "colorMode": "value",
+              "colors": [
+                "rgba(50, 172, 45, 0.97)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(245, 54, 54, 0.9)"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 0,
+              "mappingType": 1,
+              "pattern": "Value #E",
+              "thresholds": [
+                "120",
+                "240"
+              ],
+              "type": "number",
+              "unit": "dtdurations"
+            },
+            {
+              "alias": "Target Chain Height",
+              "colorMode": null,
+              "colors": [
+                "rgba(245, 54, 54, 0.9)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(50, 172, 45, 0.97)"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 2,
+              "mappingType": 1,
+              "pattern": "Value #F",
+              "thresholds": [],
+              "type": "number",
+              "unit": "locale"
+            },
+            {
+              "alias": "Blocks Behind",
+              "colorMode": "value",
+              "colors": [
+                "rgba(50, 172, 45, 0.97)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(245, 54, 54, 0.9)"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 2,
+              "mappingType": 1,
+              "pattern": "Value #G",
+              "thresholds": [
+                "1",
+                "10"
+              ],
+              "type": "number",
+              "unit": "locale",
+              "valueMaps": [
+                {
+                  "text": "Yes",
+                  "value": "1"
+                },
+                {
+                  "text": "No",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "alias": "% Peer Limit Used",
+              "colorMode": "value",
+              "colors": [
+                "rgba(245, 54, 54, 0.9)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(50, 172, 45, 0.97)"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 0,
+              "mappingType": 1,
+              "pattern": "Value #H",
+              "thresholds": [
+                "0.25",
+                "0.75"
+              ],
+              "type": "number",
+              "unit": "percentunit"
+            },
+            {
+              "alias": "",
+              "colorMode": null,
+              "colors": [
+                "rgba(245, 54, 54, 0.9)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(50, 172, 45, 0.97)"
+              ],
+              "decimals": 2,
+              "pattern": "/.*/",
+              "thresholds": [],
+              "type": "number",
+              "unit": "short"
+            }
+          ],
           "targets": [
             {
-              "expr": "system_cpu_usage {endpoint=~\"$endpoint\",service=~\"$service\",pod=~\"$pod\",namespace=~\"$namespace\", uri!~\".*actuator.*\"}",
-              "format": "time_series",
+              "expr": "sum by (instance) (ethereum_blockchain_height{instance=~\"$system\"})",
+              "format": "table",
+              "instant": true,
+              "interval": "",
               "intervalFactor": 1,
+              "legendFormat": "Chain Height",
               "refId": "A"
             },
             {
-              "expr": "process_cpu_usage {endpoint=~\"$endpoint\",service=~\"$service\",pod=~\"$pod\",namespace=~\"$namespace\", uri!~\".*actuator.*\"}",
-              "format": "time_series",
+              "expr": "sum by (instance) (ethereum_best_known_block_number{instance=~\"$system\"})",
+              "format": "table",
+              "instant": true,
               "intervalFactor": 1,
-              "refId": "B"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "CPU  Usage",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
+              "refId": "F"
             },
             {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
+              "expr": "sum by (instance) (ethereum_best_known_block_number{instance=~\"$system\"} - ethereum_blockchain_height{instance=~\"$system\"})",
+              "format": "table",
+              "instant": true,
+              "intervalFactor": 1,
+              "refId": "G"
+            },
+            {
+              "expr": "sum by (instance) (besu_blockchain_difficulty_total{instance=~\"$system\"})",
+              "format": "table",
+              "instant": true,
+              "intervalFactor": 1,
+              "legendFormat": "Total Difficulty",
+              "refId": "B"
+            },
+            {
+              "expr": "sum by (instance) (1/rate(ethereum_blockchain_height{instance=~\"$system\"}[5m]))",
+              "format": "table",
+              "instant": true,
+              "intervalFactor": 1,
+              "refId": "D"
+            },
+            {
+              "expr": "sum by (instance) (time() - besu_blockchain_chain_head_timestamp{instance=~\"$system\"})",
+              "format": "table",
+              "instant": true,
+              "intervalFactor": 1,
+              "refId": "E"
+            },
+            {
+              "expr": "sum by (instance) (ethereum_peer_count{instance=~\"$system\"})",
+              "format": "table",
+              "instant": true,
+              "intervalFactor": 1,
+              "legendFormat": "Peer Count",
+              "refId": "C"
+            },
+            {
+              "expr": "sum by (instance) (ethereum_peer_count{instance=~\"$system\"} / ethereum_peer_limit{instance=~\"$system\"})",
+              "format": "table",
+              "instant": true,
+              "intervalFactor": 1,
+              "refId": "H"
             }
           ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
+          "title": "Overview",
+          "transform": "table",
+          "type": "table"
         },
         {
           "aliasColors": {},
@@ -144,27 +393,30 @@ spec:
           "dashes": false,
           "fill": 1,
           "gridPos": {
-            "h": 6,
-            "w": 11,
-            "x": 12,
-            "y": 1
+            "h": 14,
+            "w": 12,
+            "x": 0,
+            "y": 9
           },
           "id": 12,
           "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "rightSide": false,
             "show": true,
             "total": false,
-            "values": false
+            "values": true
           },
           "lines": true,
           "linewidth": 1,
+          "links": [],
           "nullPointMode": "null",
           "options": {},
           "percentage": false,
-          "pointradius": 2,
+          "pointradius": 5,
           "points": false,
           "renderer": "flot",
           "seriesOverrides": [],
@@ -173,13 +425,15 @@ spec:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "system_load_average_1m{endpoint=~\"$endpoint\",service=~\"$service\",pod=~\"$pod\",namespace=~\"$namespace\"}",
+              "expr": "1/rate(ethereum_blockchain_height{instance=~\"$system\"}[5m])",
               "format": "time_series",
+              "interval": "",
               "intervalFactor": 1,
+              "legendFormat": "{{instance}}",
               "refId": "A"
             },
             {
-              "expr": "system_cpu_count{endpoint=~\"$endpoint\",service=~\"$service\",pod=~\"$pod\",namespace=~\"$namespace\"}",
+              "expr": "",
               "format": "time_series",
               "intervalFactor": 1,
               "refId": "B"
@@ -189,7 +443,7 @@ spec:
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Load Average",
+          "title": "Block Time",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -205,7 +459,95 @@ spec:
           },
           "yaxes": [
             {
+              "format": "s",
+              "label": null,
+              "logBase": 10,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
               "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "fill": 1,
+          "gridPos": {
+            "h": 14,
+            "w": 12,
+            "x": 12,
+            "y": 9
+          },
+          "id": 13,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "options": {},
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "ethereum_best_known_block_number{instance=~\"$system\"} - ethereum_blockchain_height{instance=~\"$system\"}",
+              "format": "time_series",
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "{{instance}}",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Blocks Behind",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "locale",
               "label": null,
               "logBase": 1,
               "max": null,
@@ -227,31 +569,18 @@ spec:
           }
         },
         {
-          "collapsed": false,
-          "gridPos": {
-            "h": 1,
-            "w": 24,
-            "x": 0,
-            "y": 7
-          },
-          "id": 6,
-          "panels": [],
-          "title": "HTTP",
-          "type": "row"
-        },
-        {
           "aliasColors": {},
           "bars": false,
           "dashLength": 10,
           "dashes": false,
           "fill": 1,
           "gridPos": {
-            "h": 8,
-            "w": 12,
+            "h": 12,
+            "w": 24,
             "x": 0,
-            "y": 8
+            "y": 23
           },
-          "id": 2,
+          "id": 6,
           "legend": {
             "avg": false,
             "current": false,
@@ -267,7 +596,7 @@ spec:
           "nullPointMode": "null",
           "options": {},
           "percentage": false,
-          "pointradius": 2,
+          "pointradius": 5,
           "points": false,
           "renderer": "flot",
           "seriesOverrides": [],
@@ -276,9 +605,10 @@ spec:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "http_server_requests_seconds_count {endpoint=~\"$endpoint\",service=~\"$service\",pod=~\"$pod\",namespace=~\"$namespace\",exception=\"None\", uri!~\".*actuator.*\"}",
+              "expr": "irate(process_cpu_seconds_total{instance=~\"$system\"}[1m])",
               "format": "time_series",
               "intervalFactor": 1,
+              "legendFormat": "CPU Time IRate [{{instance}}]",
               "refId": "A"
             }
           ],
@@ -286,7 +616,7 @@ spec:
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Request Count",
+          "title": "CPU",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -328,22 +658,113 @@ spec:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": "Prometheus",
           "fill": 1,
           "gridPos": {
-            "h": 8,
+            "h": 12,
+            "w": 12,
+            "x": 0,
+            "y": 35
+          },
+          "id": 8,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "options": {},
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "rate(jvm_gc_collection_seconds_sum{instance=~\"$system\"}[1m])",
+              "format": "time_series",
+              "interval": "",
+              "intervalFactor": 5,
+              "legendFormat": "{{gc}} [{{instance}}]",
+              "metric": "jvm_gc_collection_seconds_sum",
+              "refId": "A",
+              "step": 10
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "GC time",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "decimals": null,
+              "format": "percentunit",
+              "label": null,
+              "logBase": 1,
+              "max": "1",
+              "min": "0",
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "fill": 1,
+          "gridPos": {
+            "h": 12,
             "w": 12,
             "x": 12,
-            "y": 8
+            "y": 35
           },
           "id": 4,
           "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
             "show": true,
             "total": false,
-            "values": false
+            "values": true
           },
           "lines": true,
           "linewidth": 1,
@@ -351,7 +772,7 @@ spec:
           "nullPointMode": "null",
           "options": {},
           "percentage": false,
-          "pointradius": 2,
+          "pointradius": 5,
           "points": false,
           "renderer": "flot",
           "seriesOverrides": [],
@@ -360,9 +781,10 @@ spec:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "http_server_requests_seconds_sum{endpoint=~\"$endpoint\",service=~\"$service\",pod=~\"$pod\",namespace=~\"$namespace\",outcome=~\"$outcome\",exception=\"None\", uri!~\".*actuator.*\"}/ http_server_requests_seconds_count{endpoint=~\"$endpoint\",service=~\"$service\",pod=~\"$pod\",namespace=~\"$namespace\",outcome=~\"$outcome\", exception=\"None\", uri!~\".*actuator.*\"}",
+              "expr": "jvm_memory_bytes_used{instance=~\"$system\", area=\"heap\"} + ignoring(area) jvm_memory_bytes_used{instance=~\"$system\", area=\"nonheap\"}",
               "format": "time_series",
-              "intervalFactor": 1,
+              "intervalFactor": 5,
+              "legendFormat": "{{instance}}",
               "refId": "A"
             }
           ],
@@ -370,7 +792,7 @@ spec:
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Response Time",
+          "title": "Memory Used",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -386,7 +808,7 @@ spec:
           },
           "yaxes": [
             {
-              "format": "short",
+              "format": "decbytes",
               "label": null,
               "logBase": 1,
               "max": null,
@@ -408,135 +830,31 @@ spec:
           }
         }
       ],
-      "refresh": false,
+      "refresh": "10s",
       "schemaVersion": 18,
       "style": "dark",
-      "tags": [],
+      "tags": [
+        "besu",
+        "ethereum"
+      ],
       "templating": {
         "list": [
           {
             "allValue": null,
-            "current": {
-              "tags": [],
-              "text": "All",
-              "value": "$__all"
-            },
+            "current": {},
             "datasource": "Prometheus",
-            "definition": "label_values(namespace)",
+            "definition": "ethereum_blockchain_height",
             "hide": 0,
             "includeAll": true,
-            "label": "Namespace",
-            "multi": false,
-            "name": "namespace",
+            "label": "System",
+            "multi": true,
+            "name": "system",
             "options": [],
-            "query": "label_values(namespace)",
+            "query": "ethereum_blockchain_height",
             "refresh": 2,
-            "regex": "",
+            "regex": "/instance=\"([^\"]*)\"/",
             "skipUrlSync": false,
-            "sort": 0,
-            "tagValuesQuery": "",
-            "tags": [],
-            "tagsQuery": "",
-            "type": "query",
-            "useTags": false
-          },
-          {
-            "allValue": null,
-            "current": {
-              "tags": [],
-              "text": "All",
-              "value": "$__all"
-            },
-            "datasource": "Prometheus",
-            "definition": "label_values(service)",
-            "hide": 0,
-            "includeAll": true,
-            "label": "Service",
-            "multi": false,
-            "name": "service",
-            "options": [],
-            "query": "label_values(service)",
-            "refresh": 1,
-            "regex": "",
-            "skipUrlSync": false,
-            "sort": 0,
-            "tagValuesQuery": "",
-            "tags": [],
-            "tagsQuery": "",
-            "type": "query",
-            "useTags": false
-          },
-          {
-            "allValue": null,
-            "current": {
-              "tags": [],
-              "text": "g-monitoring-app1-deployment-f8c5579b7-2t87z",
-              "value": "g-monitoring-app1-deployment-f8c5579b7-2t87z"
-            },
-            "datasource": "Prometheus",
-            "definition": "label_values(pod)",
-            "hide": 0,
-            "includeAll": true,
-            "label": "Pod",
-            "multi": false,
-            "name": "pod",
-            "options": [],
-            "query": "label_values(pod)",
-            "refresh": 1,
-            "regex": "",
-            "skipUrlSync": false,
-            "sort": 0,
-            "tagValuesQuery": "",
-            "tags": [],
-            "tagsQuery": "",
-            "type": "query",
-            "useTags": false
-          },
-          {
-            "allValue": null,
-            "current": {
-              "tags": [],
-              "text": "main-container",
-              "value": "main-container"
-            },
-            "datasource": "Prometheus",
-            "definition": "label_values(endpoint)",
-            "hide": 0,
-            "includeAll": true,
-            "label": "Endpoint",
-            "multi": false,
-            "name": "endpoint",
-            "options": [],
-            "query": "label_values(endpoint)",
-            "refresh": 1,
-            "regex": "",
-            "skipUrlSync": false,
-            "sort": 0,
-            "tagValuesQuery": "",
-            "tags": [],
-            "tagsQuery": "",
-            "type": "query",
-            "useTags": false
-          },
-          {
-            "allValue": null,
-            "current": {
-              "text": "All",
-              "value": "$__all"
-            },
-            "datasource": "Prometheus",
-            "definition": "label_values(outcome)",
-            "hide": 0,
-            "includeAll": true,
-            "label": "ResponseStatus",
-            "multi": false,
-            "name": "outcome",
-            "options": [],
-            "query": "label_values(outcome)",
-            "refresh": 1,
-            "regex": "",
-            "skipUrlSync": false,
-            "sort": 0,
+            "sort": 5,
             "tagValuesQuery": "",
             "tags": [],
             "tagsQuery": "",
@@ -546,7 +864,7 @@ spec:
         ]
       },
       "time": {
-        "from": "now-6h",
+        "from": "now-12h",
         "to": "now"
       },
       "timepicker": {
@@ -575,7 +893,7 @@ spec:
         ]
       },
       "timezone": "",
-      "title": "Sample Dashboard",
-      "uid": "bx14CjjZk",
-      "version": 152
+      "title": "Besu Overview",
+      "uid": "XE4V0WGZz",
+      "version": 1
     }

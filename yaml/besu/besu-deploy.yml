@@ -60,6 +60,9 @@ spec:
             readOnly: true
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler

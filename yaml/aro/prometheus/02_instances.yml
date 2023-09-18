@@ -2,11 +2,12 @@ apiVersion: monitoring.coreos.com/v1
 kind: Prometheus
 metadata:
   name: prometheus-instance
-  namespace: digitalmoney
   labels:
     name: prometheus-instance
     app: prometheus-app
-    project: digitalmoney
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "9090"
 spec:
   replicas: 2
   serviceAccountName: prometheus-k8s
@@ -15,3 +16,6 @@ spec:
     matchLabels:
       name: prometheus-service-monitor
     ruleSelector: {}
+  additionalScrapeConfigs:
+    name: additional-scrape-configs
+    key: prometheus-additional.yaml

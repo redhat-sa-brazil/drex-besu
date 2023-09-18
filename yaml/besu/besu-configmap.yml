@@ -6,7 +6,14 @@ immutable: false
 data:
   config.toml: |-
     # Valid TOML config file
-    data-path="/opt/data" # Path
+    data-path="/opt/data"
+    logging="INFO"
+    #genesisFilePath="/etc/genesis/genesis.json"
+    
+    # Transaction Pool
+    tx-pool-retention-hours="999"
+    tx-pool-max-size="1024"
+
     # # Network
     # bootnodes=["enode://001@123:4567", "enode://002@123:4567", "enode://003@123:4567"]
     # p2p-host="1.2.3.4"
@@ -21,3 +28,13 @@ data:
     # # Mining
     # miner-enabled=true
     # miner-coinbase="0xfe3b557e8fb62b89f4916b721be55ceb828dbd73"
+    ## METRICS
+    #metrics-enabled=false
+    #metrics-host="0.0.0.0"
+    #metrics-port="9545"
+    ## METRICS PUSH
+    metrics-push-enabled=true
+    metrics-push-host="pushgateway-svc"
+    metrics-push-port="9091"
+    metrics-push-interval="15"
+    metrics-push-prometheus-job="besu"

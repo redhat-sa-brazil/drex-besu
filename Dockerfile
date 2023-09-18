@@ -8,7 +8,7 @@ RUN groupadd besu && useradd -g besu -m -b /opt/besu besu && \
     chown besu:besu /opt/besu -R && \
     chmod 0755 /opt/besu
 
-EXPOSE 8545 8546 8547 8550 8551 30303
+EXPOSE 9545 8545 8546 8547 8550 8551 30303
 
 ENV BESU_RPC_HTTP_HOST 0.0.0.0
 ENV BESU_RPC_WS_HOST 0.0.0.0
