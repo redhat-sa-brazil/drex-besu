@@ -1,0 +1,24 @@
+apiVersion: operators.coreos.com/v2
+kind: OperatorCondition
+metadata:
+  creationTimestamp: "2023-09-16T22:16:27Z"
+  generation: 1
+  labels:
+    operators.coreos.com/rhods-prometheus-operator.digitalmoney: ""
+  name: rhods-prometheus-operator.4.10.0
+  namespace: digitalmoney
+  ownerReferences:
+  - apiVersion: operators.coreos.com/v1alpha1
+    blockOwnerDeletion: false
+    controller: true
+    kind: ClusterServiceVersion
+    name: rhods-prometheus-operator.4.10.0
+    uid: 25393f0d-3943-4428-828d-92c3d228da8d
+  resourceVersion: "1739170"
+  uid: 6f138525-773e-41f5-81f0-21c2caae6e7d
+spec:
+  deployments:
+  - prometheus-operator
+  serviceAccounts:
+  - prometheus-k8s
+  - prometheus-operator

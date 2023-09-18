@@ -4,9 +4,9 @@ kind: Subscription
 metadata:
   generation: 1
   labels:
-    operators.coreos.com/rhods-prometheus-operator.besu-4: ""
+    operators.coreos.com/rhods-prometheus-operator.{{ project_name }}: ""
   name: rhods-prometheus-operator
-  namespace: besu-4
+  namespace: {{ project_name }}
 spec:
   channel: beta
   installPlanApproval: Manual
@@ -22,8 +22,8 @@ metadata:
   generateName: install-
   generation: 1
   labels:
-    operators.coreos.com/rhods-prometheus-operator.besu-4: ""
-  namespace: besu-4
+    operators.coreos.com/rhods-prometheus-operator.{{ project_name }}: ""
+  namespace: {{ project_name }}
   ownerReferences:
   - apiVersion: operators.coreos.com/v1alpha1
     blockOwnerDeletion: false
@@ -45,7 +45,7 @@ metadata:
   labels:
     operators.coreos.com/rhods-prometheus-operator.digitalmoney: ""
   name: rhods-prometheus-operator.4.10.0
-  namespace: besu-4
+  namespace: {{ project_name }}
   ownerReferences:
   - apiVersion: operators.coreos.com/v1alpha1
     blockOwnerDeletion: false
