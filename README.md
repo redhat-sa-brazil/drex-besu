@@ -56,18 +56,18 @@ Os modelos integrados de implementação do Openshift nas clouds permite ser uti
 **Configurando para realizar todo o deploy**
 
 - Edite o arquivo vars.yml
-
+```yaml
 openshift_cluster: "https://api.xxxxxxx:6443" # informe a API do openshift
 openshift_username: "XXXX" # informe o usuario do Openshift para deploy do projeto
 openshift_password: "XXXX" # informe a senha do usuario do Openshift
 project_name: besu-5 # informe o nome do projeto a ser criado no Openshift
 project_display_name: "besu-5" # informe o nome do projeto a ser criado no Openshift
 project_description: "bla" # informe o descritivo do projeto a ser criado no Openshift
+```
 
 - Para fazer o deploy do projeto rode o comando abaixo após alterar o arquivo.
 
 ``
-make aro
+  make aro
 ``
 
-#v0.1a
