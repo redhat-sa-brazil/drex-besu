@@ -1,0 +1,19 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: prometheus-route
+  namespace: digitalmoney
+  labels:
+    name: prometheus-route
+    app: prometheus-app
+    project: digitalmoney
+    operated-prometheus: "true"
+spec:
+  path: /
+  to:
+    kind: Service
+    name: prometheus-operated
+    weight: 100
+  port:
+    targetPort: web
+  wildcardPolicy: None

@@ -1,0 +1,7 @@
+apiVersion: v1
+data:
+  prometheus-additional.yaml: LSBqb2JfbmFtZTogcHVzaC1nYXRld2F5CiAgbWV0cmljc19wYXRoOiAvbWV0cmljcwogIHNjaGVtZTogaHR0cAogIHN0YXRpY19jb25maWdzOgogICAgLSB0YXJnZXRzOgogICAgICAgIC0gcHVzaGdhdGV3YXktc3ZjOjkwOTE=
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: additional-scrape-configs

@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: besu
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: besu
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: besu
+    spec:
+      volumes:
+        - name: besu-data
+          persistentVolumeClaim:
+            claimName: besu-data
+        - name: config-toml
+          configMap:
+            name: besu-config-toml
+      containers:
+      - image: quay.io/redhatbrsa/hyperledger-besu:v0.1a
+        imagePullPolicy: Always
+        name: besu
+        env:
+          - name: METRICS_HOST
+            value: prometheus-operated
+          - name: METRICS_PORT
+            value: '9090'
+        ports:
+        - containerPort: 8545
+          protocol: TCP
+        - containerPort: 8546
+          protocol: TCP
+        - containerPort: 8547
+          protocol: TCP
+        - containerPort: 8550
+          protocol: TCP
+        - containerPort: 8551
+          protocol: TCP
+        - containerPort: 30303
+          protocol: TCP
+        - containerPort: 30303
+          protocol: UDP
+        resources: {}
+        volumeMounts:
+          - name: besu-data
+            mountPath: /opt/data
+          - name: config-toml
+            mountPath: /etc/besu
+            readOnly: true
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30

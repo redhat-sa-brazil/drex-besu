@@ -1,0 +1,19 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: grafana-route
+  labels:
+    name: grafana-route
+    app: grafana-instance
+    operated-prometheus: "true"
+spec:
+  path: /
+  to:
+    kind: Service
+    name: grafana-instance-service
+    weight: 100
+  port:
+    targetPort: grafana
+  tls:
+    termination: edge
+  wildcardPolicy: None

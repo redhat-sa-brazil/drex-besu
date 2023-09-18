@@ -1,0 +1,45 @@
+- hosts: localhost
+
+  tasks:
+    - name: Auth in openshift
+      kubernetes.core.k8s_auth:
+        host: "{{ openshift_cluster }}"
+        username: "{{ openshift_username }}"
+        password: "{{ openshift_password }}"
+        validate_certs: false
+
+    - name: Apply svc pushgateway
+      kubernetes.core.k8s:
+        src: ../yaml/besu/pushgateway-svc.yml
+        state: present
+        namespace: "{{ project_name }}"
+
+    - name: Apply deployment pushgateway
+      kubernetes.core.k8s:
+        src: ../yaml/besu/prometheus-pushgateway.yml
+        state: present
+        namespace: "{{ project_name }}"
+
+    - name: Apply pvc hyperledger besu data
+      kubernetes.core.k8s:
+        src: ../yaml/besu/pvc-besu-data.yml
+        state: present
+        namespace: "{{ project_name }}"
+
+    - name: Apply configmap hyperledger besu
+      kubernetes.core.k8s:
+        src: ../yaml/besu/besu-configmap.yml
+        state: present
+        namespace: "{{ project_name }}"
+
+    - name: Apply deployment hyperledger besu
+      kubernetes.core.k8s:
+        src: ../yaml/besu/besu-deploy.yml
+        state: present
+        namespace: "{{ project_name }}"
+
+    - name: Apply svc hyperledger besu
+      kubernetes.core.k8s:
+        src: ../yaml/besu/besu-svc.yml
+        state: present
+        namespace: "{{ project_name }}"
