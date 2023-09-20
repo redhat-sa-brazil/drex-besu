@@ -1,7 +1,0 @@
----
-openshift_cluster: "https://XXXXXX:6443"
-openshift_username: "XXXXX"
-openshift_password: "XXXXX"
-project_name: besu
-project_display_name: "besu"
-project_description: "Projeto Hyperledger Besu em openshift"
