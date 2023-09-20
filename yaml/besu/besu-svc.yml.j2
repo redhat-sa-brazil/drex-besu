@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: besu-svc
   annotations:
-    "{{ service }}": "{{ loadbalancer }}"
+    {{ service }}: "{{ loadbalancer }}"
 spec:
   ports:
   - name: http-json-rpc

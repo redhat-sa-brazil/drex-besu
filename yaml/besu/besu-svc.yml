@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: besu-svc
   annotations:
-    "service.beta.kubernetes.io/aws-load-balancer-type": "external"
+    service.beta.kubernetes.io/aws-load-balancer-type: "external"
 spec:
   ports:
   - name: http-json-rpc
