@@ -1,0 +1,76 @@
+- hosts: localhost
+  gather_facts: no
+
+  tasks:
+    - block:
+        - name: Autenticação no OpenShift
+          community.okd.openshift_auth:
+            host: "{{ openshift_cluster }}"
+            username: "{{ openshift_username }}"
+            password: "{{ openshift_password }}"
+            validate_certs: false
+          register: login_results
+
+        - name: Apply svc pushgateway
+          community.okd.k8s:
+            host: "{{ openshift_cluster }}"
+            api_key: "{{ login_results.openshift_auth.api_key }}"
+            validate_certs: false
+            src: ../yaml/besu/pushgateway-svc.yml
+            state: present
+            namespace: "{{ project_name }}"
+
+        - name: Apply deployment pushgateway
+          community.okd.k8s:
+            host: "{{ openshift_cluster }}"
+            api_key: "{{ login_results.openshift_auth.api_key }}"
+            validate_certs: false
+            src: ../yaml/besu/prometheus-pushgateway.yml
+            state: present
+            namespace: "{{ project_name }}"
+
+        - name: Prepare pvc hyperledger besu data
+          ansible.builtin.template:
+            src: ../yaml/besu/pvc-besu-data.yml.j2
+            dest: ../yaml/besu/pvc-besu-data.yml
+
+        - name: Apply pvc hyperledger besu data
+          community.okd.k8s:
+            host: "{{ openshift_cluster }}"
+            api_key: "{{ login_results.openshift_auth.api_key }}"
+            validate_certs: false
+            src: ../yaml/besu/pvc-besu-data.yml
+            state: present
+            namespace: "{{ project_name }}"
+
+        - name: Apply configmap hyperledger besu
+          community.okd.k8s:
+            host: "{{ openshift_cluster }}"
+            api_key: "{{ login_results.openshift_auth.api_key }}"
+            validate_certs: false
+            src: ../yaml/besu/besu-configmap.yml
+            state: present
+            namespace: "{{ project_name }}"
+
+        - name: Apply deployment hyperledger besu
+          community.okd.k8s:
+            host: "{{ openshift_cluster }}"
+            api_key: "{{ login_results.openshift_auth.api_key }}"
+            validate_certs: false
+            src: ../yaml/besu/besu-deploy.yml
+            state: present
+            namespace: "{{ project_name }}"
+
+        - name: Prepare pvc hyperledger besu data
+          ansible.builtin.template:
+            src: ../yaml/besu/besu-svc.yml.j2
+            dest: ../yaml/besu/besu-svc.yml
+
+        - name: Apply svc hyperledger besu
+          community.okd.k8s:
+            host: "{{ openshift_cluster }}"
+            api_key: "{{ login_results.openshift_auth.api_key }}"
+            validate_certs: false
+            src: ../yaml/besu/besu-svc.yml
+            state: present
+            namespace: "{{ project_name }}"
