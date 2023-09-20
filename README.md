@@ -13,6 +13,11 @@ Versão de openshift que está sendo utilizado para este deploy.
 - ARO
 	- 4.12
 
+- ROSA e HCP
+  - 4.12
+  - 4.13
+**Pre-req: ter o aws loadbalancer operator instalado no cluster ROSA verifique no [link mobb.ninja](https://mobb.ninja/docs/rosa/aws-load-balancer-operator/ "link mobb.ninja")*
+
 > *outros ambientes serão disponibilizados em breve*
 
 ###### Arquitetura do ARO
