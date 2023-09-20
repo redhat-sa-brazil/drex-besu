@@ -8,5 +8,5 @@ spec:
   resources:
     requests:
       storage: 10Gi
-  storageClassName: azurefile-csi-nfs
-  volumeMode: Filesystem
+  storageClassName: gp3-csi
+

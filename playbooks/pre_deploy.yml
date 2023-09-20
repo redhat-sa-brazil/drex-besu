@@ -1,0 +1,146 @@
+- hosts: localhost
+  gather_facts: no
+
+  tasks:
+    - block:
+        - name: Autenticação no OpenShift
+          community.okd.openshift_auth:
+            host: "{{ openshift_cluster }}"
+            username: "{{ openshift_username }}"
+            password: "{{ openshift_password }}"
+            validate_certs: false
+          register: login_results
+
+        - name: Create new project
+          community.okd.k8s:
+            host: "{{ openshift_cluster }}"
+            api_key: "{{ login_results.openshift_auth.api_key }}"
+            validate_certs: false
+            state: present
+            definition:
+              apiVersion: project.openshift.io/v1
+              kind: ProjectRequest
+              metadata:
+                name: "{{ project_name }}"
+                labels:
+                  openshift.io/cluster-monitoring: 'true'
+              displayName: "{{ project_display_name }}"
+              description: "{{ project_description }}"
+          ignore_errors: true
+
+        - name: Prepare grafana pvc
+          ansible.builtin.template:
+            src: ../yaml/metrics/grafana/01_grafana-instance-pvc.yml.j2
+            dest: ../yaml/metrics/grafana/01_grafana-instance-pvc.yml
+
+        - name: Create grafana pvc
+          community.okd.k8s:
+            host: "{{ openshift_cluster }}"
+            api_key: "{{ login_results.openshift_auth.api_key }}"
+            validate_certs: false
+            src: ../yaml/metrics/grafana/01_grafana-instance-pvc.yml
+            state: present
+            namespace: "{{ project_name }}"
+
+        - name: Deploy grafana operator
+          community.okd.k8s:
+            host: "{{ openshift_cluster }}"
+            api_key: "{{ login_results.openshift_auth.api_key }}"
+            validate_certs: false
+            src: ../yaml/metrics/grafana/00_operator.yml
+            state: present
+
+        - name: Aguardando operator
+          ansible.builtin.pause:
+            seconds: 40
+
+        - name: Create grafana instances
+          community.okd.k8s:
+            host: "{{ openshift_cluster }}"
+            api_key: "{{ login_results.openshift_auth.api_key }}"
+            validate_certs: false
+            src: ../yaml/metrics/grafana/02_instances.yml
+            state: present
+            namespace: "{{ project_name }}"
+
+        - name: Create datasource
+          community.okd.k8s:
+            host: "{{ openshift_cluster }}"
+            api_key: "{{ login_results.openshift_auth.api_key }}"
+            validate_certs: false
+            src: ../yaml/metrics/grafana/03_grafana_data_source.yml
+            state: present
+            namespace: "{{ project_name }}"
+
+        - name: Create dashboard
+          community.okd.k8s:
+            host: "{{ openshift_cluster }}"
+            api_key: "{{ login_results.openshift_auth.api_key }}"
+            validate_certs: false
+            src: ../yaml/metrics/grafana/04_grafana_dashboard.yml
+            state: present
+            namespace: "{{ project_name }}"
+
+        - name: Create grafana route
+          community.okd.k8s:
+            host: "{{ openshift_cluster }}"
+            api_key: "{{ login_results.openshift_auth.api_key }}"
+            validate_certs: false
+            src: ../yaml/metrics/grafana/05_route.yml
+            state: present
+            namespace: "{{ project_name }}"
+
+        - name: Prepare operator
+          ansible.builtin.template:
+            src: ../yaml/metrics/prometheus/00_operator.yml.j2
+            dest: ../yaml/metrics/prometheus/00_operator.yml
+
+        - name: Deploy prometheus operator
+          community.okd.k8s:
+            host: "{{ openshift_cluster }}"
+            api_key: "{{ login_results.openshift_auth.api_key }}"
+            validate_certs: false
+            src: ../yaml/metrics/prometheus/00_operator.yml
+            state: present
+            namespace: "{{ project_name }}"
+
+        - name: Prepare subscription
+          ansible.builtin.template:
+            src: ../yaml/metrics/prometheus/01_subscription.yml.j2
+            dest: ../yaml/metrics/prometheus/01_subscription.yml
+
+        - name: Deploy subscription
+          community.okd.k8s:
+            host: "{{ openshift_cluster }}"
+            api_key: "{{ login_results.openshift_auth.api_key }}"
+            validate_certs: false
+            src: ../yaml/metrics/prometheus/01_subscription.yml
+            state: present
+            namespace: "{{ project_name }}"
+
+        - name: Create prometheus instances
+          community.okd.k8s:
+            host: "{{ openshift_cluster }}"
+            api_key: "{{ login_results.openshift_auth.api_key }}"
+            validate_certs: false
+            src: ../yaml/metrics/prometheus/02_instances.yml
+            state: present
+            namespace: "{{ project_name }}"
+
+        - name: Create prometheus route
+          community.okd.k8s:
+            host: "{{ openshift_cluster }}"
+            api_key: "{{ login_results.openshift_auth.api_key }}"
+            validate_certs: false
+            src: ../yaml/metrics/prometheus/03_route.yml
+            state: present
+            namespace: "{{ project_name }}"
+
+        - name: Create prometheus scrape config
+          community.okd.k8s:
+            host: "{{ openshift_cluster }}"
+            api_key: "{{ login_results.openshift_auth.api_key }}"
+            validate_certs: false
+            src: ../yaml/metrics/prometheus/05_additional-scrape-configs.yml
+            state: present
+            namespace: "{{ project_name }}"

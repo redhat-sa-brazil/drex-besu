@@ -1,11 +1,11 @@
 apiVersion: operators.coreos.com/v1
 kind: OperatorGroup
 metadata:
-    name: besu-5-opg
-    namespace: besu-5
+    name: besu-11-opg
+    namespace: besu-11
 spec:
   targetNamespaces:
-    - besu-5
+    - besu-11
   upgradeStrategy: Default
 ---
 apiVersion: operators.coreos.com/v1alpha1
@@ -13,9 +13,9 @@ kind: Subscription
 metadata:
   generation: 1
   labels:
-    operators.coreos.com/rhods-prometheus-operator.besu-5: ""
+    operators.coreos.com/rhods-prometheus-operator.besu-11: ""
   name: rhods-prometheus-operator
-  namespace: besu-5
+  namespace: besu-11
 spec:
   channel: beta
   installPlanApproval: Automatic
