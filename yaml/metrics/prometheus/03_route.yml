@@ -2,11 +2,9 @@ kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
   name: prometheus-route
-  namespace: digitalmoney
   labels:
     name: prometheus-route
     app: prometheus-app
-    project: digitalmoney
     operated-prometheus: "true"
 spec:
   path: /
