@@ -3,5 +3,5 @@ apiVersion: operators.coreos.com/v1
 kind: Operator
 metadata:
   generation: 1
-  name: rhods-prometheus-operator.besu-11
+  name: rhods-prometheus-operator.besu-12
 spec: {}

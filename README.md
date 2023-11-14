@@ -17,6 +17,11 @@ Versão de openshift que está sendo utilizado para este deploy.
   - 4.12
   - 4.13
 
+- vsphere
+  - 4.12
+  - 4.13
+  - 4.14
+
 - Agnostic Plataform
   - 4.12
   - 4.13
@@ -84,4 +89,12 @@ project_description: "bla" # informe o descritivo do projeto a ser criado no Ope
 
 ``
   make rosa
+``
+
+``
+  make vsphere
+``
+
+``
+  make agnostic-odf
 ``
