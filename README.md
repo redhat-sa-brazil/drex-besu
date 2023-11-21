@@ -17,7 +17,17 @@ Versão de openshift que está sendo utilizado para este deploy.
   - 4.12
   - 4.13
 
-**Pre-req: ter o aws loadbalancer operator instalado no cluster ROSA verifique no [link mobb.ninja](https://mobb.ninja/docs/rosa/aws-load-balancer-operator/ "link mobb.ninja")*
+- vsphere
+  - 4.12
+  - 4.13
+  - 4.14
+
+- Agnostic Plataform
+  - 4.12
+  - 4.13
+  - 4.14
+
+**Pre-req: ter o aws loadbalancer operator instalado no cluster ROSA verifique no [link redhat experts](https://cloud.redhat.com/experts/rosa/aws-load-balancer-operator/ "link redhat experts")*
 
 > *outros ambientes serão disponibilizados em breve*
 
@@ -79,4 +89,12 @@ project_description: "bla" # informe o descritivo do projeto a ser criado no Ope
 
 ``
   make rosa
+``
+
+``
+  make vsphere
+``
+
+``
+  make agnostic-odf
 ``
