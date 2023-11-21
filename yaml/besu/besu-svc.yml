@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: besu-svc
   annotations:
-    service.beta.kubernetes.io/aws-load-balancer-type: "NodePort"
+    agnostic: "NodePort"
 spec:
   ports:
   - name: http-json-rpc
@@ -37,4 +37,4 @@ spec:
   selector:
     app: besu
   sessionAffinity: None
-  type: LoadBalancer
+  type: NodePort
