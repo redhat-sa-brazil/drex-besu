@@ -37,6 +37,10 @@ Versão de openshift que está sendo utilizado para este deploy.
 ###### Arquitetura do ROSA
 [![Arquitetura do ROSA](https://github.com/redhat-sa-brazil/drex-besu/blob/main/docs/rosa_architecture.png "Arquitetura do ROSA")](https://github.com/redhat-sa-brazil/drex-besu/blob/main/docs/rosa_architecture.png "Arquitetura do ROSA")
 
+###### Arquitetura do vSPHERE
+[![Arquitetura do vSphere](https://github.com/redhat-sa-brazil/drex-besu/blob/main/docs/vsphere_architecture.png "Arquitetura do vSphere")](https://github.com/redhat-sa-brazil/drex-besu/blob/main/docs/vsphere_architecture.png "Arquitetura do vSphere")
+
+
 ###### Construção do container
 - hyperledger-besu [23.4.1](https://github.com/hyperledger/besu/releases/tag/23.4.1 "23.4.1")(conforme especificado na arquitetura do bacen)
 - Red Hat Universal Base Image [ubi9/openjdk17](registry.access.redhat.com/ubi9/openjdk-17:latest "ubi9/openjdk17")
