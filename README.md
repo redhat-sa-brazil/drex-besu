@@ -34,8 +34,10 @@ Versão de openshift que está sendo utilizado para este deploy.
 ###### Arquitetura do ARO
 [![Arquitetura do ARO](https://github.com/redhat-sa-brazil/drex-besu/blob/main/docs/aro_architecture.png "Arquitetura do ARO")](https://github.com/redhat-sa-brazil/drex-besu/blob/main/docs/aro_architecture.png "Arquitetura do ARO")
 
-###### Construção do container
+###### Arquitetura do ROSA
+[![Arquitetura do ROSA](https://github.com/redhat-sa-brazil/drex-besu/blob/main/docs/rosa_architecture.png "Arquitetura do ROSA")](https://github.com/redhat-sa-brazil/drex-besu/blob/main/docs/rosa_architecture.png "Arquitetura do ROSA")
 
+###### Construção do container
 - hyperledger-besu [23.4.1](https://github.com/hyperledger/besu/releases/tag/23.4.1 "23.4.1")(conforme especificado na arquitetura do bacen)
 - Red Hat Universal Base Image [ubi9/openjdk17](registry.access.redhat.com/ubi9/openjdk-17:latest "ubi9/openjdk17")
 
@@ -76,8 +78,8 @@ Os modelos integrados de implementação do Openshift nas clouds permite ser uti
 openshift_cluster: "https://api.xxxxxxx:6443" # informe a API do openshift
 openshift_username: "XXXX" # informe o usuario do Openshift para deploy do projeto
 openshift_password: "XXXX" # informe a senha do usuario do Openshift
-project_name: besu-5 # informe o nome do projeto a ser criado no Openshift
-project_display_name: "besu-5" # informe o nome do projeto a ser criado no Openshift
+project_name: besu-XXX # informe o nome do projeto a ser criado no Openshift
+project_display_name: "besu-XXX" # informe o nome do projeto a ser criado no Openshift
 project_description: "bla" # informe o descritivo do projeto a ser criado no Openshift
 ```
 
